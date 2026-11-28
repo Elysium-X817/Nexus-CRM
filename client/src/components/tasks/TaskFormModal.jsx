@@ -72,6 +72,11 @@ export const TaskFormModal = ({ isOpen, onClose, taskToEdit, initialContact = nu
       return;
     }
 
+    const payload = {
+      ...formData,
+      contact: formData.contact ? formData.contact : null
+    }
+
     setLoading(true);
     try {
       if (taskToEdit?._id) {

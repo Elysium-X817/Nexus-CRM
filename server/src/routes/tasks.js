@@ -134,6 +134,10 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Task not found' });
     }
 
+    if (req.body.contact === "") {
+      req.body.contact = null;
+    }
+
     const fields = ['title', 'contact', 'customerName', 'dueDate', 'priority', 'taskType', 'notes', 'completed'];
     fields.forEach((field) => {
       if (req.body[field] !== undefined) {

@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { Layers, Mail, Lock, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export const LoginPage = ({ onSwitchToSignup }) => {
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -31,7 +31,6 @@ export const LoginPage = ({ onSwitchToSignup }) => {
     } catch (err) {
       // If demo user doesn't exist yet, try creating it or fallback
       try {
-        const { register } = useAuth();
         await register('Demo Admin', 'demo@nexuscrm.io', 'demo1234', 'Nexus Technologies Demo');
       } catch (regErr) {
         setError('Demo login initialization error: ' + (regErr.message || err.message));
